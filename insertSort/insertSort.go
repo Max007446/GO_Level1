@@ -9,11 +9,11 @@ import (
 
 func main() {
 	inputNums := []int64{}
-	scn := bufio.NewScanner(os.Stdin)
-	for scn.Scan() {
-		num, er := strconv.ParseInt(scn.Text(), 10, 64)
-		if er != nil {
-			panic(er)
+	scanner := bufio.NewScanner(os.Stdin)
+	for scanner.Scan() {
+		num, err := strconv.ParseInt(scanner.Text(), 10, 64)
+		if err != nil {
+			panic(err)
 		}
 		inputNums = append(inputNums, num)
 	}
@@ -23,7 +23,7 @@ func main() {
 		for j := i - 1; j >= 0 && inputNums[j] > newElem; j-- {
 			// все элементы больше newElem сдвигаем враво на 1
 			inputNums[j+1] = inputNums[j]
-			j -= 1
+			j--
 			inputNums[j+1] = newElem // на освобожденное место пишем NewElem
 		}
 	}
