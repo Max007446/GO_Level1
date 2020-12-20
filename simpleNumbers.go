@@ -23,18 +23,18 @@ func main() {
 		}
 	}
 }
+
+// наименьший делитель составного числа x не превосходит sqrt x,поэтому достаточно
+//проверить только делители числа sqrt x
 func SimpleN(x int) bool {
 	if x < 1 {
 		return false
 	}
-	result := true
-
 	for i := 2; i*i <= x; i++ {
-		if x%i == 0 {
-
-			result := false
-			return result
+		x0 := x % i
+		if x0 == 0 {
+			return false
 		}
 	}
-	return result
+	return true
 }
