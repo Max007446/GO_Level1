@@ -52,6 +52,9 @@ func main() {
 		}
 	case "~a":
 		res = math.Sqrt(a)
+		if a < 0 {
+			panic("Нельзя извлекать корень из отрицательного числа")
+		}
 	case "^":
 		res = math.Pow(a, b)
 	default:
