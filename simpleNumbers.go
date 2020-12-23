@@ -16,7 +16,7 @@ func main() {
 		b++
 
 		if SimpleN(b) {
-			println(b)
+			fmt.Println(b)
 		}
 		if b >= n {
 			break
