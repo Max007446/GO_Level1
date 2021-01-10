@@ -6,14 +6,15 @@ import (
 
 //InsertSortT метод вставками
 func InsertSortT(inputNums []int64) []int64 {
-	for i := 0; i < len(inputNums); i++ {
+	for i := 1; i < len(inputNums); i++ {
 		newElem := inputNums[i] //в NewElem сохранем первый элемент
-		for j := i - 1; j >= 0 && inputNums[j] > newElem; j-- {
+		j := i
+		for j > 0 && inputNums[j-1] > newElem {
 			// все элементы больше newElem сдвигаем враво на 1
-			inputNums[j+1] = inputNums[j]
+			inputNums[j] = inputNums[j-1]
 			j--
-			inputNums[j+1] = newElem // на освобожденное место пишем NewElem
 		}
+		inputNums[j] = newElem // на освобожденное место пишем NewElem
 	}
 	return inputNums
 }

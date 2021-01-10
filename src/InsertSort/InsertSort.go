@@ -17,15 +17,18 @@ func main() {
 		}
 		inputNums = append(inputNums, num)
 	}
+	var sliceSortNum = make([]int64, len(inputNums))
+	copy(sliceSortNum, inputNums)
 
-	for i := 0; i < len(inputNums); i++ {
-		newElem := inputNums[i] //в NewElem сохранем первый элемент
-		for j := i - 1; j >= 0 && inputNums[j] > newElem; j-- {
+	for i := 1; i < len(sliceSortNum); i++ {
+		newElem := sliceSortNum[i] //в NewElem сохранем первый элемент
+		j := i
+		for j > 0 && sliceSortNum[j-1] > newElem {
 			// все элементы больше newElem сдвигаем враво на 1
-			inputNums[j+1] = inputNums[j]
+			sliceSortNum[j] = sliceSortNum[j-1]
 			j--
-			inputNums[j+1] = newElem // на освобожденное место пишем NewElem
 		}
+		sliceSortNum[j] = newElem
 	}
-	fmt.Println(inputNums)
+	fmt.Println(sliceSortNum)
 }
